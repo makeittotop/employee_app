@@ -33,21 +33,36 @@
   </div>
   <div class="field">
     <%= f.label :department %><br>
-    <%= f.text_field :department %>
+    <%= f.select :department, get_employee_departments %>
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.select :status, get_employee_status %>
   </div>
   <div class="field">
     <%= f.label :join_date %><br>
-    <%= f.date_select :join_date %>
+    <%= f.date_select :join_date, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' } %> 
   </div>
-  <div class="field">
+  <div class="field" id="end_date">
     <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
+    <%= f.date_select :end_date, disabled: true, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' } %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
+
+<%= javascript_tag do %>
+  $("#employee_status").on('change', function() {
+      if($(this).val() == 'Inactive') {
+          $("#employee_end_date_1i")[0].disabled=false;
+          $("#employee_end_date_2i")[0].disabled=false;
+          $("#employee_end_date_3i")[0].disabled=false;
+      }
+      else {
+          $("#employee_end_date_1i")[0].disabled=true;
+          $("#employee_end_date_2i")[0].disabled=true;
+          $("#employee_end_date_3i")[0].disabled=true;
+      }
+  });
 <% end %>

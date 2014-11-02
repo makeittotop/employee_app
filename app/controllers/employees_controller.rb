@@ -1,5 +1,7 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  include EmployeesHelper
+  #helper_method :get_office_departments, :get_employee_status 
 
   # GET /employees
   # GET /employees.json

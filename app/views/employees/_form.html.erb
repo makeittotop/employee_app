@@ -1,4 +1,4 @@
-<%= form_for(@employee) do |f| %>
+<%= form_for @employee, html: {multipart: true} do |f| %>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
@@ -20,8 +20,19 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
+    <%= f.label :date_of_birth %><br>
+    <%= f.date_select :date_of_birth, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' }  %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.radio_button :gender, "male" %>
+    <%= f.label :gender, "M", value: "m" %>
+    <%= f.radio_button :gender, "female" %>
+    <%= f.label :gender, "F", value: "f" %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.country_select :country, {priority: %w(US CA AE IN PK), prompt: 'Please select a country'}%>
   </div>
   <div class="field">
     <%= f.label :personal_email %><br>
@@ -32,6 +43,10 @@
     <%= f.text_field :contact_number %>
   </div>
   <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
     <%= f.label :department %><br>
     <%= f.select :department, get_employee_departments %>
   </div>
@@ -40,12 +55,16 @@
     <%= f.select :status, get_employee_status %>
   </div>
   <div class="field">
-    <%= f.label :join_date %><br>
-    <%= f.date_select :join_date, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' } %> 
+    <%= f.label :hire %><br>
+    <%= f.date_select :hire, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' } %> 
   </div>
   <div class="field" id="end_date">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date, disabled: true, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' } %>
+    <%= f.label :end_hire %><br>
+    <%= f.date_select :end_hire, disabled: true, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' } %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
   </div>
   <div class="actions">
     <%= f.submit %>

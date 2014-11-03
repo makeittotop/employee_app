@@ -1,49 +1,89 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+           <%= link_to "Edit", edit_employee_path(@employee) %>
+           <%= link_to "Back", employees_path %><br>
+           <p class=" text-info">May 05,2014,03:00 pm </p>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= "#{@employee.first_name()} #{@employee.last_name()}" %></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4 col-lg-4 " align="center">
+              <% if @employee.avatar.present? %>
+                <%= image_tag @employee.avatar_url(:profile) %>
+              <% else %>
+                <%= image_tag "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100", alt: "User pic", class: "img-circle" %>
+              <% end %>
+            </div>
+            <div class=" col-md-8 col-lg-8 "> 
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>First Name:</td>
+                    <td><%= @employee.first_name %></td>
+                  </tr>
+                  <tr>
+                    <td>Last Name:</td>
+                    <td><%= @employee.last_name %></td>
+                  </tr>
+                  <tr>
+                    <td>Date Of Birth:</td>
+                    <td><%= @employee.date_of_birth %></td>
+                  </tr>
+                  <tr>
+                    <td>Gender:</td>
+                    <td><%= @employee.gender %></td>
+                  </tr>
+                  <tr>
+                    <td>Country:</td>
+                    <td><%= Carmen::Country.coded(@employee.country).name %></td>
+                  </tr>
+                  <tr>
+                    <td>E-mail:</td>
+                    <td><%= @employee.personal_email %></td>
+                  </tr>
+                  <tr>
+                    <td>Contact Number:</td>
+                    <td><%= @employee.contact_number %></td>
+                  </tr>  
+                  <tr>
+                    <td>Employee Code:</td>
+                    <td><%= @employee.code %></td>
+                  </tr>  
+                  <tr>
+                    <td>Status:</td>
+                    <td><%= @employee.status %></td>
+                  </tr>  
+                  <tr>
+                    <td>Department:</td>
+                    <td><%= @employee.department %></td>
+                  </tr>
+                  <tr>
+                    <td>Hire:</td>
+                    <td><%= @employee.hire %></td>
+                  </tr>
+                  <tr>
+                    <td>End Hire:</td>
+                    <td><%= @employee.end_hire %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+          <span class="pull-right">
+            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @employee.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @employee.last_name %>
-</p>
-
-<p>
-  <strong>Employee code:</strong>
-  <%= @employee.code %>
-</p>
-
-<p>
-  <strong>Personal email:</strong>
-  <%= @employee.personal_email %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @employee.contact_number %>
-</p>
-
-<p>
-  <strong>Department:</strong>
-  <%= @employee.department %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @employee.status %>
-</p>
-
-<p>
-  <strong>Join date:</strong>
-  <%= @employee.join_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @employee.end_date %>
-</p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>

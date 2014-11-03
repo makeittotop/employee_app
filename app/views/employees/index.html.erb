@@ -2,6 +2,7 @@
   <div class="jumbotron">
     <h1 class="welcome-message">Welcome to the Employee Application!</h1>
   </div>
+  <!--
   <div id="custom-search-input">
     <div class="input-group col-md-12">
       <input type="text" class="  search-query form-control" placeholder="Search" />
@@ -12,6 +13,7 @@
       </span>
     </div>
   </div>
+  -->
 </div>
 
 <div class="row">
@@ -51,9 +53,13 @@
         <td><%= employee.hire %></td>
         <td><%= employee.end_hire %></td>
         <td><%= image_tag employee.avatar_url(:thumb) if employee.avatar.present? %></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <div class="btn-group btn-group-sm">
+          <td><%= link_to 'Show', employee, class: "btn btn-default btn-primary" %></td>
+          <td><%= link_to 'Edit', edit_employee_path(employee), class: "btn btn-default btn-info" %></td>
+          <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-danger" %></td>
+        </div>
+
       </tr>
     <% end %>
   </tbody>

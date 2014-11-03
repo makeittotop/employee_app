@@ -60,15 +60,22 @@ body {
 
 .container .jumbotron {
     padding-left: 0px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .jumbotron {
     padding-top: 0px;
     padding-bottom: 0px;
     margin-bottom: 15px;
-    #background-color: #5bc0de;
+    background-color: #ffffff;
 }
 
 .jumbotron .welcome-message {
-    font-size: 50px;
+    #font-size: 50px;
 }
+
+.new-employee {
+  margin-left: 15px;
+}
+

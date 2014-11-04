@@ -45,3 +45,5 @@ gem 'carrierwave'
 gem 'rmagick'
 
 gem 'carmen-rails'
+
+gem 'bootstrap-select-rails'

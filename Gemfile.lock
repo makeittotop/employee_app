@@ -30,6 +30,7 @@ GEM
     arel (5.0.1.20140414130214)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    bootstrap-select-rails (1.6.2)
     builder (3.2.2)
     carmen (1.0.1)
       unicode_utils (~> 1.4.0)
@@ -123,6 +124,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  bootstrap-select-rails
   carmen-rails
   carrierwave
   coffee-rails (~> 4.0.0)

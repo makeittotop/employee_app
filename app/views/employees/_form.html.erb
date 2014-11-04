@@ -1,87 +1,131 @@
-<%= form_for @employee, html: {multipart: true} do |f| %>
-  <% if @employee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+<div class="row">
+  <div class="well col-md-3">
+    <%= form_for @employee, html: {role: "form", multipart: true} do |f| %>
+      <% if @employee.errors.any? %>
+        <div class="bg-danger" id="error_explanation">
+          <h2>Fix the following <%= pluralize(@employee.errors.count, "error") %>:</h2>
 
-      <ul>
-      <% @employee.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @employee.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+
+    <!-- Official Information -->
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default" id="panel1">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-target="#collapseOne" 
+              href="#collapseOne">
+              Official Information
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= f.label :code %><br>
+              <%= f.text_field :code, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :department %><br>
+              <%= f.select :department, get_employee_departments, include_blank: "Select department" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :status %><br>
+              <%= f.select :status, get_employee_status, include_blank: "Select status" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :hire %><br>
+              <%= f.date_select :hire, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' }, order: [:day, :month, :year],  class: "selectpicker" %>
+            </div>
+            <div class="form-group" id="end_date">
+              <%= f.label :end_hire %><br>
+              <%= f.date_select :end_hire, disabled: false, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' }, order: [:day, :month, :year] %>
+            </div>
+            <div class="form-group">
+              <%= f.label :avatar %><br>
+              <%= f.file_field :avatar %>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <!-- Personal Information -->
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default" id="panel2">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
+              Personal
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= f.label :first_name %><br>
+              <%= f.text_field :first_name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :last_name %><br>
+              <%= f.text_field :last_name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :date_of_birth %><br>
+              <%= f.date_select :date_of_birth, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' }, order: [:day, :month, :year], start_year: 1950, class: "form-control"  %>
+            </div>
+            <div class="form-group">
+              <%= f.label :gender %><br>
+              <%= f.select :status, get_gender, include_blank: "Select gender" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :country %><br>
+              <%= f.country_select :country, {priority: %w(US CA AE IN PK), prompt: 'Please select a country'}%>
+            </div>
+            <div class="form-group">
+              <%= f.label :personal_email %><br>
+              <%= f.text_field :personal_email, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :contact_number %><br>
+              <%= f.text_field :contact_number, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <!-- Submit button -->
+    <div class="actions form-group">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+ 
+  <div class="col-md-2">
+    <div class="thumbnail">
+      <img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
+    </div>  
   </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br>
-    <%= f.date_select :date_of_birth, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' }  %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.radio_button :gender, "male" %>
-    <%= f.label :gender, "M", value: "m" %>
-    <%= f.radio_button :gender, "female" %>
-    <%= f.label :gender, "F", value: "f" %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br>
-    <%= f.country_select :country, {priority: %w(US CA AE IN PK), prompt: 'Please select a country'}%>
-  </div>
-  <div class="field">
-    <%= f.label :personal_email %><br>
-    <%= f.text_field :personal_email %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_number %><br>
-    <%= f.text_field :contact_number %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :department %><br>
-    <%= f.select :department, get_employee_departments %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.select :status, get_employee_status %>
-  </div>
-  <div class="field">
-    <%= f.label :hire %><br>
-    <%= f.date_select :hire, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' } %> 
-  </div>
-  <div class="field" id="end_date">
-    <%= f.label :end_hire %><br>
-    <%= f.date_select :end_hire, disabled: true, prompt: { day: 'Select day', month: 'Select Month', year: 'Select Year' } %>
-  </div>
-  <div class="field">
-    <%= f.label :avatar %><br>
-    <%= f.file_field :avatar %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
 
-<%= javascript_tag do %>
-  $("#employee_status").on('change', function() {
-      if($(this).val() == 'Inactive') {
-          $("#employee_end_date_1i")[0].disabled=false;
-          $("#employee_end_date_2i")[0].disabled=false;
-          $("#employee_end_date_3i")[0].disabled=false;
-      }
-      else {
-          $("#employee_end_date_1i")[0].disabled=true;
-          $("#employee_end_date_2i")[0].disabled=true;
-          $("#employee_end_date_3i")[0].disabled=true;
-      }
-  });
-<% end %>
+    <%= javascript_tag do %>
+      $("#employee_status").on('change', function() {
+          if($(this).val() == 'Inactive') {
+              $("#employee_end_date_1i")[0].disabled=false;
+              $("#employee_end_date_2i")[0].disabled=false;
+              $("#employee_end_date_3i")[0].disabled=false;
+          }
+          else {
+              $("#employee_end_date_1i")[0].disabled=true;
+              $("#employee_end_date_2i")[0].disabled=true;
+              $("#employee_end_date_3i")[0].disabled=true;
+          }
+      });
+    <% end %>

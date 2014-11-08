@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.9)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     bootstrap-select-rails (1.6.2)
@@ -49,6 +50,16 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    devise_ldap_authenticatable (0.8.1)
+      devise (>= 3.0)
+      net-ldap (>= 0.3.1, < 0.6.0)
     erubis (2.7.0)
     execjs (2.2.2)
     hike (1.2.3)
@@ -65,6 +76,8 @@ GEM
     mime-types (2.4.3)
     minitest (5.4.2)
     multi_json (1.10.1)
+    net-ldap (0.5.1)
+    orm_adapter (0.5.0)
     pg (0.17.1)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -87,6 +100,8 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     rmagick (2.13.3)
     sass (3.2.19)
     sass-rails (4.0.4)
@@ -118,6 +133,8 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicode_utils (1.4.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -128,6 +145,8 @@ DEPENDENCIES
   carmen-rails
   carrierwave
   coffee-rails (~> 4.0.0)
+  devise
+  devise_ldap_authenticatable
   jbuilder (~> 2.0)
   jquery-rails
   pg

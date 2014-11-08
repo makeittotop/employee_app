@@ -47,3 +47,6 @@ gem 'rmagick'
 gem 'carmen-rails'
 
 gem 'bootstrap-select-rails'
+
+gem "devise"
+gem "devise_ldap_authenticatable"

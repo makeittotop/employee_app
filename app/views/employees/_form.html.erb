@@ -18,17 +18,14 @@
       <div class="panel panel-default" id="panel1">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-target="#collapseOne" 
-              href="#collapseOne">
               Official Information
-            </a>
           </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse in">
           <div class="panel-body">
             <div class="form-group">
               <%= f.label :code %><br>
-              <%= f.text_field :code, class: "form-control" %>
+              <%= f.text_field :code, class: "form-control text-field-class" %>
             </div>
             <div class="form-group">
               <%= f.label :department %><br>
@@ -61,20 +58,18 @@
       <div class="panel panel-default" id="panel2">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
-              Personal
-            </a>
+              Personal Information
           </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse in">
           <div class="panel-body">
             <div class="form-group">
               <%= f.label :first_name %><br>
-              <%= f.text_field :first_name, class: "form-control" %>
+              <%= f.text_field :first_name, class: "form-control text-field-class" %>
             </div>
             <div class="form-group">
               <%= f.label :last_name %><br>
-              <%= f.text_field :last_name, class: "form-control" %>
+              <%= f.text_field :last_name, class: "form-control text-field-class" %>
             </div>
             <div class="form-group">
               <%= f.label :date_of_birth %><br>
@@ -82,7 +77,7 @@
             </div>
             <div class="form-group">
               <%= f.label :gender %><br>
-              <%= f.select :status, get_gender, include_blank: "Select gender" %>
+              <%= f.select :gender, get_gender, include_blank: "Select gender" %>
             </div>
             <div class="form-group">
               <%= f.label :country %><br>
@@ -90,11 +85,11 @@
             </div>
             <div class="form-group">
               <%= f.label :personal_email %><br>
-              <%= f.text_field :personal_email, class: "form-control" %>
+              <%= f.text_field :personal_email, class: "form-control text-field-class" %>
             </div>
             <div class="form-group">
               <%= f.label :contact_number %><br>
-              <%= f.text_field :contact_number, class: "form-control" %>
+              <%= f.text_field :contact_number, class: "form-control text-field-class" %>
             </div>
           </div>
         </div>
@@ -103,7 +98,7 @@
      
     <!-- Submit button -->
     <div class="actions form-group">
-      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <%= f.submit "Submit", class: "btn btn-info" %>
     </div>
     <% end %>
   </div>

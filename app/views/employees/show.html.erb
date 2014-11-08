@@ -1,6 +1,114 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+<div class="row">
+  <div class="col-md-offset-4">
+    <h3><strong class="">Employee Record: <%= "#{@employee.first_name} #{@employee.last_name}".titleize %></strong></h3>
+    <div class="row">
+      <div class="well col-md-4">
+
+
+        <!-- Official Information -->
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default" id="panel1">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                  Official Information
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <div class="panel-body">
+
+                <table class="table">
+                  <tbody>
+                    <tr class="grey">
+                      <td class="td-class"><strong class="a">Code:</strong></td>
+                      <td><strong><%= @employee.code %></strong></td>
+                    </tr>
+                    <tr class="white">
+                      <td class="td-class"><strong class="a">Department:</strong></td>
+                      <td><strong><%= @employee.department %></strong></td>
+                    </tr>
+                    <tr class="grey">
+                      <td class="td-class"><strong class="a">Status:</strong></td>
+                      <td><strong><%= @employee.status %></strong></td>
+                    </tr>
+                    <tr class="white">
+                      <td class="td-class"><strong class="a">Hire:</strong></td>
+                      <td><strong><%= @employee.hire.strftime "%d-%m-%Y" %></strong></td>
+                    </tr>
+                    <% if @employee.end_hire? %>
+                        <tr class="grey">
+                          <td class="td-class"><strong class="a">EndHire:</strong></td>
+                          <td><strong><%= @employee.end_hire.strftime "%d-%m-%Y" %></strong></td>
+                        </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default" id="panel2">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                  Personal Information
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <table class="table">
+                  <tbody>
+                    <tr class="grey">
+                      <td class="td-class"><strong class="a">First Name:</strong></td>
+                      <td><strong class=" text-left"><%= @employee.first_name.titleize %></strong></td>
+                    </tr>
+                    <tr class="white">
+                      <td class="td-class"><strong class="a">Last Name:</strong></td>
+                      <td><strong class=" text-left"><%= @employee.last_name.titleize %></strong></td>
+                    </tr>
+                    <tr class="grey">
+                      <td class="td-class"><strong class="a">Date Of Birth:</strong></td>
+                      <td><strong class=" text-left"><%= @employee.date_of_birth.strftime("%d-%m-%Y") if @employee.date_of_birth? %></strong></td>
+                    </tr>
+                    <tr class="white">
+                      <td class="td-class"><strong class="a">Gender:</strong></td>
+                      <td><strong class=" text-left"><%= @employee.gender.titleize %></strong></td>
+                    </tr>
+                    <tr class="grey">
+                      <td class="td-class"><strong class="a">Country:</strong></td>
+                      <td><strong class=" text-left"><%= Carmen::Country.coded(@employee.country).name.titleize %></strong></td>
+                    </tr>
+                    <tr class="white">
+                      <td class="td-class"><strong class="a">Email:</strong></td>
+                      <td><strong class=" text-left"><%= @employee.personal_email %></strong></td>
+                    </tr>
+                    <tr class="grey">
+                      <td class="td-class"><strong class="a">Contact Number:</strong></td>
+                      <td><strong class=" text-left"><%= @employee.contact_number %></strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <%= link_to "Edit", edit_employee_path(@employee), class: "btn btn-info" %>
+        <%= link_to "Back", employees_path, class: "btn btn-info" %><br>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<!--
            <%= link_to "Edit", edit_employee_path(@employee) %>
            <%= link_to "Back", employees_path %><br>
            <p class=" text-info">May 05,2014,03:00 pm </p>
@@ -85,5 +193,4 @@
       </div>
     </div>
   </div>
-</div>
-
+-->

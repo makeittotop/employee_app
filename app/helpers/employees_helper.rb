@@ -11,4 +11,8 @@ module EmployeesHelper
   def get_gender
       status_list = ['Male', 'Female']
   end    
+
+  def get_admin_list
+      admin_list = ['abegail', 'abhishek']
+  end    
 end

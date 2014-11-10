@@ -6,11 +6,4 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def authenticate
-    @login = params[:login]
-    @password = params[:password]
-    puts "#{@login} #{@password}"
- 
-    redirect_to :back
-  end
 end

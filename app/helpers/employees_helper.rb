@@ -1,7 +1,20 @@
 module EmployeesHelper
-  def get_employee_departments
-      deps = ['Modeling', 'Animation', 'Rigging', 'Lighting', 'Compositing', 'FX', 'Pipeline', 'IT', 'Texturing', 'Administration', 'Production Support', 'Human Resources']
-      deps.sort
+  def get_employee_departments type
+      prod = %w{Modeling Animation Rigging Lighting Texturing Compositing FX}
+      tech = %w|Information\ Technology Pipeline|
+      supp = %w"Administration Human\ Resources Production\ Support"
+      all = prod + tech + supp
+
+      if type.equal? :prod
+          prod
+      elsif type.equal? :tech 
+          tech
+      elsif type.equal? :supp
+          supp
+      else 
+          deps = prod + tech + supp 
+          deps.sort
+      end
   end
 
   def get_employee_status

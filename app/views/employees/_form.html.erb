@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
               <%= f.label :department %><br>
-              <%= f.select :department, get_employee_departments, include_blank: "Select department" %>
+              <%= f.select :department, get_employee_departments(:all), include_blank: "Select department" %>
             </div>
             <div class="form-group">
               <%= f.label :status %><br>

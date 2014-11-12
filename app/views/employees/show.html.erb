@@ -98,7 +98,7 @@
 
 
         <% unless session[:employee_id].blank? %>
-          <% if session[:admin] || session[:employee_id] == employee.id %>
+          <% if session[:admin] || session[:employee_id] == @employee.id %>
             <%= link_to "Edit", edit_employee_path(@employee), class: "btn btn-primary" %>
           <% end %>
         <% end %>

@@ -12,6 +12,8 @@ class Employee < ActiveRecord::Base
     protected
     
     def self.authenticate login, password
+        return false if password.blank?
+
         ldap = Net::LDAP.new
         ldap.host = "172.16.10.10"
         ldap.port = 389

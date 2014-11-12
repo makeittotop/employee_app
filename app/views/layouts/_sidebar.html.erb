@@ -1,0 +1,20 @@
+<div class="col-sm-3 col-md-1 sidebar">
+  <strong class='sidebar-subheader'>Production</strong>
+  <ul class="nav nav-sidebar">
+    <% get_employee_departments(:prod).each do |dept| %>
+      <li class=""><%= link_to dept, '#' %></li>
+    <% end %>
+  </ul>
+  <strong class='sidebar-subheader'>Technology</strong>
+  <ul class="nav nav-sidebar">
+    <% get_employee_departments(:tech).each do |dept| %>
+      <li class=""><%= link_to dept, '#' %></li>
+    <% end %>
+  </ul>
+  <strong class='sidebar-subheader'>Support</strong>
+  <ul class="nav nav-sidebar">
+    <% get_employee_departments(:supp).each do |dept| %>
+      <li class=""><%= link_to dept, '#' %></li>
+    <% end %>
+  </ul>
+</div>

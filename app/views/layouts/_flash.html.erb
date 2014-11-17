@@ -1,7 +1,7 @@
 <% flash.each do |name, msg| -%>
   <% next if name == "success" %>
 
-  <div class="alert alert-error my-alert">
+  <div class="alert alert-error fade in my-alert">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <h4><%= "#{msg.titleize}" %>
   </div>
